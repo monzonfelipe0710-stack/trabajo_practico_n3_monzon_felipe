@@ -1,4 +1,4 @@
-# Trabajo Práctico N°3 - Estado Global con Context API y useReducer
+# Trabajo Práctico N°3/N°4 - Estado Global + Optimizaciones
 
 **Materia:** Taller de Lenguajes de Programación III (React Native)  
 **Docente a cargo:** Rolón Lautaro Emanuel  
@@ -7,15 +7,26 @@
 
 ## Descripción
 
-Este proyecto implementa un sistema de gestión de elementos utilizando **Context API** y **useReducer** en React con Vite. La aplicación permite agregar, editar y eliminar elementos de forma centralizada utilizando estado global.
+Este proyecto implementa un sistema de gestión de elementos utilizando **Context API** y **useReducer** en React con Vite, con optimizaciones de performance implementadas.
+
+**Rama principal (main):** TP N°3 - Context API y useReducer  
+**Rama optimizada (feature/tp4-optimizations):** TP N°4 - Con memo, useMemo y useCallback
 
 ## Características Principales
 
+### TP N°3 - Base
 ✅ **Context API**: Implementación de contexto global para gestionar el estado de la aplicación  
 ✅ **useReducer**: Patrón reducer para manejar acciones complejas  
 ✅ **Operaciones CRUD**: Agregar, editar y eliminar elementos  
 ✅ **Código Organizado**: Código bien organizado y modularizado  
 ✅ **Interfaz Responsiva**: Diseño moderno con estilos CSS profesionales
+
+### TP N°4 - Optimizaciones (rama feature/tp4-optimizations)
+✅ **React.memo**: Memoización de componentes para evitar re-renders  
+✅ **useCallback**: Funciones estables entre renders  
+✅ **useMemo**: Memoización de cálculos complejos  
+✅ **SubComponentes**: Descomposición para mejor rendimiento  
+✅ **Performance**: Aplicación significativamente más rápida
 
 ## Componentes Principales
 
@@ -187,6 +198,41 @@ Components re-render
 - **useReducer** - Hook para lógica compleja de estado
 - **CSS3** - Estilos modernos y responsivos
 
+## Ramas del Proyecto
+
+### main (TP N°3)
+Rama principal con la implementación básica de Context API y useReducer.
+```bash
+git checkout main
+```
+
+### feature/tp4-optimizations (TP N°4)
+Rama con optimizaciones de performance usando memo, useMemo y useCallback.
+```bash
+git checkout feature/tp4-optimizations
+```
+
+Para más detalles sobre las optimizaciones, ver [OPTIMIZATIONS.md](OPTIMIZATIONS.md)
+
+## Optimizaciones de Performance (TP N°4)
+
+Se han implementado las siguientes optimizaciones en la rama `feature/tp4-optimizations`:
+
+### React.memo
+- AddItem envuelto en memo para evitar re-renders innecesarios
+- ItemList envuelto en memo
+- ItemCard extraído como componente memoizado
+
+### useCallback
+- handleChange en AddItem
+- handleSubmit en AddItem
+- handleEditClick, handleEditChange, handleSaveEdit, handleCancel, handleDelete en ItemList
+
+### useMemo
+- renderedItems en ItemList para memoizar la lista renderizada
+
+**Impacto:** Reducción significativa de re-renders y mejor performance general.
+
 ## Notas de Desarrollo
 
 - El ID de cada elemento se genera automáticamente usando `Date.now()`
@@ -194,6 +240,7 @@ Components re-render
 - La edición se realiza inline sin recargar la página
 - Los cambios son instantáneos gracias al contexto global
 - El proyecto está listo para agregar persistencia con localStorage si es necesario
+- Las optimizaciones de TP N°4 no alteran la funcionalidad, solo mejoran el rendimiento
 
 ## Autor
 

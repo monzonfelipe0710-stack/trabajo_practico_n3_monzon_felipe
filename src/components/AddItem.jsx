@@ -1,24 +1,26 @@
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 import { useGlobalContext } from '../context/useGlobalContext';
 import { ACTIONS } from '../context/reducer';
 import './AddItem.css';
 
-export const AddItem = () => {
+const AddItemComponent = () => {
   const { dispatch } = useGlobalContext();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
   });
 
-  const handleChange = (e) => {
+  // Optimizado con useCallback para evitar recrear la función en cada render
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
-    });
-  };
+    }));
+  }, []);
 
-  const handleSubmit = (e) => {
+  // Optimizado con useCallback para evitar recrear la función en cada render
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
 
     if (!formData.title.trim()) {
@@ -35,7 +37,7 @@ export const AddItem = () => {
       title: '',
       description: '',
     });
-  };
+  }, [formData, dispatch]);
 
   return (
     <div className="add-item">
@@ -73,3 +75,6 @@ export const AddItem = () => {
     </div>
   );
 };
+
+// Envolver el componente con memo para evitar re-renders innecesarios
+export const AddItem = memo(AddItemComponent);
