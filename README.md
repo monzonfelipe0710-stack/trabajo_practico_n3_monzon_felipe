@@ -1,5 +1,7 @@
 # Trabajo Práctico N°3 - Estado Global con Context API y useReducer
 
+> **ℹ️ NOTA:** Existe una rama `feature/tp4-optimizations` con implementaciones del Trabajo Práctico N°4 que incluye optimizaciones de performance usando memo, useMemo y useCallback. Ver [OPTIMIZATIONS.md](OPTIMIZATIONS.md) para más detalles.
+
 **Materia:** Taller de Lenguajes de Programación III (React Native)  
 **Docente a cargo:** Rolón Lautaro Emanuel  
 **Docente auxiliar:** Mereles Juliana Aracelli  
